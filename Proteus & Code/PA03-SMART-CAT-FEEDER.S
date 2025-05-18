@@ -422,9 +422,9 @@ TIMER1_COMPA_vect:
     BREQ  timer_idle_state
     
     ; In feeding state
-    ; Check if feeding time has elapsed (3 seconds = 3 interrupts)
-    CPI   R29, 3
-    BRLO  timer_exit    ; If less than 3 seconds, continue
+    ; Check if feeding time has elapsed (2 seconds = 2 interrupts)
+    CPI   R29, 2
+    BRLO  timer_exit    ; If less than 2 seconds, continue
     
     ; Switch back to idle state
     CLR   R28           ; Set idle state
@@ -434,9 +434,9 @@ TIMER1_COMPA_vect:
     
 timer_idle_state:
     ; In idle state
-    ; Check if idle time has elapsed (5 seconds = 5 interrupts)
-    CPI   R29, 5
-    BRLO  timer_exit    ; If less than 5 seconds, continue
+    ; Check if idle time has elapsed (3 seconds = 3 interrupts)
+    CPI   R29, 3
+    BRLO  timer_exit    ; If less than 3 seconds, continue
     
     ; Switch to feeding state
     LDI   R28, STATE_FEEDING ; Set feeding state
