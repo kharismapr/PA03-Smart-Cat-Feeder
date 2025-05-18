@@ -8,7 +8,7 @@ Kelompok 3
 - Syahmi Hamdani (2306220532)
 ```
 
-## 🔍 Introduction To The Problem and The Solution
+## 🔍 Introduction to The Problem and The Solution
 
 Memberikan makan hewan peliharaan khususnya kucing, sering menjadi tantangan tersendiri bagi pemilik dengan aktivitas yang padat. Rutinitas yang tidak teratur atau lupa memberi makan dapat berdampak pada kesehatan dan kenyamanan hewan peliharaan.
 
