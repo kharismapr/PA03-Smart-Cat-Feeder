@@ -7,13 +7,13 @@ Kelompok 3
 - Syahmi Hamdani (2306220532)
 ```
 
-## Background
+## Introduction to the problem and the solution
 
 Memberikan makan hewan peliharaan khususnya kucing, sering menjadi tantangan tersendiri bagi pemilik dengan aktivitas yang padat. Rutinitas yang tidak teratur atau lupa memberi makan dapat berdampak pada kesehatan dan kenyamanan hewan peliharaan.
 
 Sebagai solusi, Smart Cat Feeder dirancang sebagai sistem pengingat otomatis berbasis Arduino Uno. Sistem ini membantu pemilik menjaga jadwal pemberian makan dengan notifikasi melalui buzzer dan pesan pada LCD, serta peringatan saat stok pakan menipis. Dengan demikian, pemilik dapat memastikan kebutuhan makan kucing tetap terpenuhi secara teratur.
 
-## Implementasi Hardware
+## Hardware design and implementation details
 
 Tools yang kami gunakan untuk proyek ini adalah
 - Proteus untuk simulasi rangkaian
@@ -33,7 +33,7 @@ Adapun LCD 16x2 yang digunakan untuk menampilkan status pada sistem ini telah di
 
 ![proyek mbd](https://hackmd.io/_uploads/SyE6mvw-ex.jpg)
 
-## Implementasi Software
+## Software implementation details
 
 Untuk mengontrol Arduino, digunakan software Arduino IDE dengan bahasa assembly AVR untuk mikrokontroler ATMega328p. Program mengatur pembacaan data dari sensor LDR, pengelolaan logika timer, penanganan interrupt dari tombol manual, pengaktifan buzzer, serta pengiriman data status ke LCD menggunakan protokol I2C. Di awal program, sistem menginisialisasi I2C untuk komunikasi dengan LCD, ADC untuk membaca sensor, timer untuk pengaturan interval, serta interrupt eksternal untuk tombol manual.
 
@@ -62,19 +62,19 @@ Berikut langkah-langkah code nya
    Jika button manual ditekan, interrupt akan mentrigger sistem langsung masuk ke mode "feeding" tanpa menunggu timer, buzzer berbunyi, dan pesan pada LCD diperbarui sesuai status terbaru.
 
 
-## Hasil Testing
+## Test results and performance evaluation
+
+![rangkaian mbd](https://hackmd.io/_uploads/SJ0ULvv-xe.jpg)
 
 Pengujian dilakukan untuk memastikan seluruh komponen sistem Smart Cat Feeder bekerja sesuai fungsinya:
 - **Timer Testing**: Sistem diuji untuk memberikan peringatan setiap 3 detik. Hasilnya, buzzer dan LCD aktif sesuai waktu yang ditentukan.
 - **Interrupt Testing**: Saat tombol ditekan, sistem langsung merespons dengan memunculkan notifikasi bahwa pemberian makan telah dilakukan, meskipun timer belum mencapai waktunya.
 - **LDR Sensor Testing**: Sensor LDR diuji dengan kondisi terang (tandanya stok habis) dan gelap (stok penuh). Saat terang, buzzer dan LCD aktif, sesuai harapan.
 - **Buzzer & LCD Testing**: Komponen diuji untuk memastikan output suara dan tampilan berjalan normal. Buzzer berbunyi dan LCD menampilkan pesan peringatan sesuai kondisi.
-
-![rangkaian mbd](https://hackmd.io/_uploads/SJ0ULvv-xe.jpg)
-
-## Analisis & Kesimpulan
-
+- 
 Berdasarkan hasil pengujian, sistem Smart Cat Feeder bekerja dengan baik dan mampu menjalankan fungsinya sesuai dengan tujuan. Timer berhasil memberikan peringatan otomatis setiap 3 detik, sementara fitur interrupt memungkinkan pengguna memberi makan secara manual tanpa harus menunggu waktu yang ditentukan. Sensor LDR yang terhubung melalui ADC juga mampu mendeteksi kondisi stok makanan dengan cukup akurat, dimana kondisi terang menandakan stok habis dan memicu buzzer serta pesan di LCD. Sistem ini memberikan kombinasi antara pengingat otomatis dan fleksibilitas manual, sehingga sangat membantu pemilik kucing dengan rutinitas yang padat. Meskipun demikian, sistem memiliki kekurangan seperti pengaruh tingkat pencahayaan untuk mendeteksi stok makanan yang bisa saja menimbulkan kesalahan deteksi jika digunakan di ruangan gelap. Oleh karena itu, pengembangan lebih lanjut dapat dilakukan dengan mengganti sensor LDR menjadi sensor berat agar deteksi stok makanan lebih akurat dan tidak bergantung pada kondisi pencahayaan.
+
+## Conclusion and future work
 
 Secara keseluruhan, Smart Cat Feeder berhasil menjalankan fungsinya sebagai sistem pengingat pemberian makan kucing secara otomatis dan manual. Timer yang mengatur interval 3 detik bekerja dengan baik untuk memberikan peringatan rutin, sementara tombol interrupt memberikan fleksibilitas bagi pengguna untuk memberi makan kapan saja. Sensor LDR juga cukup akurat dalam mendeteksi kondisi stok makanan. Sistem ini sederhana namun efektif, cocok untuk pemilik hewan yang sibuk. Meski masih bisa dikembangkan lagi, proyek ini sudah memberikan solusi praktis yang membantu menjaga rutinitas makan kucing tetap teratur dan tidak terlewat.
 
