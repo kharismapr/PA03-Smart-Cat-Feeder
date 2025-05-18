@@ -547,6 +547,7 @@ update_food_level:
     LDI   R31, hi8(msg_high)
     LDI   R30, lo8(msg_high)
     CALL  LCD_print_string
+    CLR   R27   ; clear alert flag
     
     RET
     
@@ -555,6 +556,7 @@ food_low:
     LDI   R31, hi8(msg_low)
     LDI   R30, lo8(msg_low)
     CALL  LCD_print_string
+    CLR   R27   ; Clear alert flag
     
     RET
     
@@ -563,7 +565,28 @@ food_empty:
     LDI   R31, hi8(msg_empty)
     LDI   R30, lo8(msg_empty)
     CALL  LCD_print_string
+
+    ; Check if buzzed
+    CPI   R27, 1
+    BREQ  skip_alert
     
+    ; Alert and set the flag
+    CALL buzzer_on  ; first buzz
+    CALL delay_ms
+    CALL delay_ms
+    CALL buzzer_on  
+    CALL delay_ms
+    CALL delay_ms
+    CALL delay_ms
+    CALL delay_ms
+    CALL buzzer_on  ; second buzz
+    CALL delay_ms
+    CALL delay_ms
+    CALL buzzer_on 
+
+    LDI   R27, 1            ; Buzzed Flag
+    
+skip_alert:
     RET
 
 ;====================================================================
